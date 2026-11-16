@@ -1,0 +1,46 @@
+﻿version: 1
+
+thresholds:
+  error:
+    warn: 0.40
+    fail: 0.70
+  warning:
+    warn: 0.60
+  confidenceMin: 0.55
+
+slicing:
+  maxDiffLength: 100000
+  maxSlicesPerRule: 16
+  maxExtraSlicesPerTurn: 32
+  aggregation: max
+
+providers:
+  judge:
+    provider: gemini
+    model: gemini-4-hydrogen
+    mode: api
+  fixer:
+    provider: gemini
+    model: gemini-4-hydrogen
+    mode: api
+
+fix:
+  enabled: true
+  maxRecheckCycles: 1
+  allowTests: false
+  allowDependencies: false
+  allowWorkflows: false
+  allowConfigs: false
+
+commitLint:
+  conventionalFormat: true
+  semanticMatch: true
+
+github:
+  approveOnPass: true
+  requestChangesOnFail: true
+  forkPolicy: comment-only
+
+memory:
+  emitEvents: true
+  ttlDays: 90
