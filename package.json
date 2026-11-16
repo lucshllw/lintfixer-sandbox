@@ -1,0 +1,10 @@
+{
+  "name": "lintfixer-sandbox",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Clean sandbox repository for LintFixer Git Score, semantic linting, and PR Bot validation",
+  "scripts": {
+    "test": "node --test test/*.test.ts"
+  }
+}

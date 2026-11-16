@@ -18,8 +18,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "24"
-      - name: Run LintFixer Semantic Check
+      - name: Run sandbox tests and PR Bot check
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: echo "LintFixer PR Bot configured for PR #${{ github.event.pull_request.number }}"
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          npm test
+          echo "LintFixer PR Bot checked PR #${PR_NUMBER}"
